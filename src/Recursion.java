@@ -1,7 +1,7 @@
-package com.company;
 
 public class Recursion {
 
+    //calculates the nth value of a fibonaccci
     public static int fib(int n){
         //returns the nth value of a fibonacci sequence recursively
         if(n<=2) return 1;
@@ -26,6 +26,7 @@ public class Recursion {
     public  String reverseRecursively(int index, char[] str){
         //reverses a string recursively
         if (str == null || index >= str.length) {
+            //testing git
             return "";
         }
         StringBuilder ret = new StringBuilder();
