@@ -1,9 +1,9 @@
 public class Sorting {
 
     public static void main(String[] args){
-        int[] a = {2,2,4,4};
-        int[] b = {2,2,4,4};
-        findMedianSortedArrays(a,b);
+        int[] a = {4,5,6,0,0,0};
+        int[] b = {1,2,3};
+        mergeSorted(a,b,3,3);
     }
 
     //bubble sort code implementation
@@ -83,5 +83,25 @@ public class Sorting {
             return ((double)set[median] + (double)set[median - 1])/2;
         else
             return (double)set[median];
+    }
+
+    //you are given two sorted arrays A and B where A has a large enough buffer at the end to hold B. Write a method
+    //to merge B into A in sorted order.
+    private static void mergeSorted(int[] a, int[] b, int countA, int countB){
+        int indexMerged = countB + countA - 1;
+        int indexA = countA - 1;
+        int indexB = countB - 1;
+
+        while(indexB >= 0){
+            if(indexA >= 0 && a[indexA] > b[indexB]){
+                a[indexMerged] = a[indexA];
+                indexA--;
+            }
+            else{
+                a[indexMerged] = b[indexB];
+                indexB--;
+            }
+            indexMerged--;
+        }
     }
 }
