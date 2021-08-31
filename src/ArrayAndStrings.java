@@ -1,6 +1,12 @@
 import java.util.HashMap;
+import java.util.Map;
 
 public class ArrayAndStrings {
+
+    public static void main(String[] args){
+        System.out.println(isAnagram("parse", "pears"));
+
+    }
 
     public static void duplicateZero() {
         //[1,0,2,3,0,4,5,0]
@@ -323,5 +329,35 @@ public class ArrayAndStrings {
             }
         }
         return resultHolder;
+    }
+
+    //this method checks if two strings are anagram
+    //approach: loop and put the characters of the first string in a hashmap with the character as key and no of times it appears as integer
+    //loop thru the second string and match the characters, whenever you find the match of any character in the map, less the occurence by 1
+    //in the end, all values in the map must be 0, if it's less or greater than zero, then they are not anagrams
+    public static boolean isAnagram(String first, String second){
+        HashMap<Character, Integer> map = new HashMap<>();
+        for(char i: first.toCharArray()) {
+            if (!map.containsKey(i)) {
+                map.put(i, 1);
+            }
+            else
+                map.put(i, map.get(i) + 1);
+        }
+            for(char i: second.toCharArray()) {
+                if (map.containsKey(i)) {
+                    map.put(i, map.get(i) - 1);
+                    if (map.containsValue(-1)) {
+                        return false;
+                    }
+                }
+                else return false;
+            }
+                for(Map.Entry c: map.entrySet()){
+                    if((int)c.getValue() > 0){
+                        return false;
+                    }
+                }
+                return true;
     }
 }
